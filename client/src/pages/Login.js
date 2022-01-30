@@ -4,7 +4,7 @@ import { LOGIN_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 
 const Login = (props) => {
-    const [login, { error }] = useMutation(LOGIN_USER);
+    const  error = useMutation(LOGIN_USER);
     const [formState, setFormState] = useState({ 
     username: '', 
     password: '',
@@ -39,7 +39,7 @@ const Login = (props) => {
                 />
                 <input
                   className="login-form"
-                  placeholder="********"
+                  placeholder="Password"
                   id="password"
                   name="password"
                   type="password"                  

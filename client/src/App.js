@@ -1,22 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
-import {ApolloProvider} from '@apollo/client';
+import {ApolloProvider, ApolloClient, createHttpLink, InMemoryCache} from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from './pages/login';
-import Signup from './pages/Signup' 
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Header from './components/Header';
 
 
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
+const client = new ApolloClient({ 
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
+
 function App() {
   return (
     <ApolloProvider client={client}>
     <Router>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+    <Header/>
     <Switch>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/signup" component={Signup}/>

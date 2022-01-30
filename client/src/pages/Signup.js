@@ -39,7 +39,7 @@ const Signup = () => {
                 />
                 <input
                   className="login-form"
-                  placeholder="********"
+                  placeholder="Password"
                   id="password"
                   name="password"
                   type="password"                  
