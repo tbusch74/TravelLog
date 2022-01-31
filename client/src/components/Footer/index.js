@@ -1,6 +1,4 @@
 import React from "react";
-// import icons
-// icons code goes here
 
 function Footer() {
   return (
