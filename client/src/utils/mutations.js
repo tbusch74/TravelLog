@@ -25,3 +25,27 @@ mutation addUser ($username: String!, $email: String!, $password: String!){
   }
 }
 `
+
+export const ADD_TRAVEL = gql`
+mutation addTravel($travelText: String!) {
+  addTravel (travelText: $travelText){
+    _id
+    username
+    travelText
+    createdAt
+    voteCount
+  }
+}
+`;
+
+export const DELETE_TRAVEL = gql`
+mutation deleteTravel($id: ID!) {
+  deleteTravel (travelId: $id){
+    _id
+    username
+    travelText
+    createdAt
+    voteCount
+  }
+}
+`;

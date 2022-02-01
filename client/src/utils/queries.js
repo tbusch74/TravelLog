@@ -11,6 +11,7 @@ query me {
         travelText
         createdAt
         username
+        voteCount
       }
     }
   }`
@@ -26,6 +27,7 @@ query me {
         travelText
         createdAt
         username
+        voteCount
       }
     }
   }
@@ -42,6 +44,41 @@ query me {
         travelText
         createdAt
         username
+        voteCount
+      }
+    }
+  }
+  `
+
+  export const QUERY_TRAVELS = gql`
+    query travels ($username: String) {
+      travels (username: $username) {
+        _id
+        username
+        travelText
+        createdAt
+        voteCount
+        votes {
+          _id
+          username
+          createdAt
+        }
+      }
+    }
+  `
+
+  export const QUERY_TRAVEL = gql`
+  query travel ($id: ID!) {
+    travel (_id: $id) {
+      _id
+      username
+      travelText
+      createdAt
+      voteCount
+      votes {
+        _id
+        username
+        createdAt
       }
     }
   }
