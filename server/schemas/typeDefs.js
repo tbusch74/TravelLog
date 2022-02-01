@@ -12,7 +12,15 @@ const typeDefs = gql `
         _id: ID
         username: String
         travelText: String
-        createdAt: String        
+        createdAt: String 
+        voteCount: Int
+        votes: [Vote]       
+    }
+
+    type Vote {
+        _id: ID
+        username: String
+        createdAt: String 
     }
 
     type Auth {
@@ -32,7 +40,7 @@ const typeDefs = gql `
         login(username: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addTravel(travelText: String!): Travel
-        deleteTravel(travelId: String!):Travel
+        deleteTravel(travelId: ID!):Travel
     }
 `;
 

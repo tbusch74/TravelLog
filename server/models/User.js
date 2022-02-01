@@ -27,12 +27,6 @@ const userSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Travel'
       }
-    ],
-    votes: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Vote'
-      }
     ]
   }
 );

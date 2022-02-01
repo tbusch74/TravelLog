@@ -58,7 +58,7 @@ const resolvers = {
         addTravel: async(parent,args, context) => {
             if (context.user) {
             const travel = await Travel.create({...args, username: context.user.username });
-            await User.findByIDandUpdate (
+            await User.findByIdAndUpdate (
                 { _id: context.user._id },
                 {$push: {travels: travel._id}},
                 {new: true}
@@ -69,23 +69,22 @@ const resolvers = {
         },
         deleteTravel: async (partent, {travelId}, context) => {
             if (context.user) {
-                userTravelArr = await User.findOne({ _id: context.user._id }).select('travels')
-                if (userTravelArr.includes(travelId)){
-                    await User.findByIDandUpdate(
+                deletedTravel = await Travel.findById(travelId)
+                if (deletedTravel && deletedTravel.username === context.user.username){
+                    await User.findByIdAndUpdate(
                         { _id: context.user._id },
-                        { $pull: { travels: travelId} },
-                        { new: false }
+                        { $pull: { travels: {_id:travelId}} },
+                        { new: true }
                     )
-                    const deletedTravel = await Travel.deleteByID (travelId) 
+                    await Travel.deleteOne ({_id: travelId}) 
                     return deletedTravel
+                }else{
+                    throw new AuthenticationError('No travel with this ID on record')
                 }
-                throw new AuthenticationError('You need to be logged in!');
             }
-
+            throw new AuthenticationError('You need to be logged in!');
         }
-
     }
-
 };
 
 module.exports = resolvers;

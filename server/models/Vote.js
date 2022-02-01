@@ -1,11 +1,8 @@
 const { Schema } = require('mongoose');
+const dateFormat = require('../utils/dateFormat')
 
 const voteSchema = new Schema(
   {
-    voteCount: {
-      type: Number,
-      required: false,
-    },
     username: {
       type: String,
       required: true
