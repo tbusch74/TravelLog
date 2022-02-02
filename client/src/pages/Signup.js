@@ -6,6 +6,7 @@ import { useMutation } from '@apollo/client';
 const Signup = () => {
     const [formState, setFormState] = useState({ 
     username: '', 
+    email: '',
     password: '',
     });
     
@@ -41,6 +42,15 @@ const Signup = () => {
                   name="username"
                   type="username"                  
                   value={formState.username}
+                  onChange={handleChange}
+                />
+                <input
+                  className="login-form"
+                  placeholder="Email"
+                  id="email"
+                  name="email"
+                  type="email"                  
+                  value={formState.email}
                   onChange={handleChange}
                 />
                 <input

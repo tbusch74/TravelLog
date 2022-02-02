@@ -4,6 +4,7 @@ const typeDefs = gql `
     type User {
         _id: ID
         username: String
+        email: String
         travels: [Travel]
     }
 
@@ -11,7 +12,15 @@ const typeDefs = gql `
         _id: ID
         username: String
         travelText: String
-        createdAt: String        
+        createdAt: String 
+        voteCount: Int
+        votes: [Vote]       
+    }
+
+    type Vote {
+        _id: ID
+        username: String
+        createdAt: String 
     }
 
     type Auth {
@@ -21,17 +30,20 @@ const typeDefs = gql `
 
     type Query {
         me: User
-        users[username: String!]: User
+        user (username: String!): User
+        users: [User]
         travels(username: String):[Travel]
         travel(_id: ID!):Travel
     }
 
     type Mutation {
         login(username: String!, password: String!): Auth
-        addUser(username: String!, password: String!): Auth
+        addUser(username: String!, email: String!, password: String!): Auth
         addTravel(travelText: String!): Travel
-        deleteTravel(travelId: String!):Travel
+        deleteTravel(travelId: ID!):Travel
+        addVote(travelId: ID!):Travel
+        deleteVote(travelId: ID!):Travel
     }
-`
+`;
 
 module.exports = typeDefs;
