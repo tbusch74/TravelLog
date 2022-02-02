@@ -4,7 +4,6 @@ import { ADD_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 
 const Signup = () => {
-    const [addUser, { error }] = useMutation(ADD_USER);
     const [formState, setFormState] = useState({ 
     username: '', 
     password: '',
