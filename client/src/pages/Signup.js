@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import Auth from '../utils/auth';
-import { LOGIN_USER } from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 
-const Login = (props) => {
-
+const Signup = () => {
     const [formState, setFormState] = useState({ 
     username: '', 
     password: '',
@@ -19,18 +18,20 @@ const Login = (props) => {
       });
     };
 
-  const [login, {error}] = useMutation(LOGIN_USER);
+
+  const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleSubmit = async (event) => {
       event.preventDefault();
-
-      try{ const{data} = await login ({ cariables: {...formState}});
-      Auth.login(data.login.token);
-    } catch (e) {console.error(e)}};
+      try {
+        const {data} = await addUser({ variables: {...formState}});
+        Auth.logn(data.addUser.token);
+      }catch (e) { console.error(e)};
+    };
   
     return (
       <main className="login">
-            <h4 className="card-header">Login</h4>
+            <h4 className="card-header">Sign Up</h4>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
                 <input
@@ -55,11 +56,11 @@ const Login = (props) => {
                   Submit
                 </button>
               </form>
-              {error && <div>Login failed</div>}
+              {error && <div>Signup failed</div>}
             </div>
       </main>
     );
 };
 
 
-export default Login;
+export default Signup;
