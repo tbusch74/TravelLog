@@ -4,7 +4,6 @@ import { LOGIN_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 
 const Login = (props) => {
-    const  error = useMutation(LOGIN_USER);
     const [formState, setFormState] = useState({ 
     username: '', 
     password: '',
@@ -18,10 +17,15 @@ const Login = (props) => {
         [name]: value,
       });
     };
-  
+
+  const [login, {error}] = useMutation(LOGIN_USER);
+
     const handleSubmit = async (event) => {
       event.preventDefault();
-    };
+
+      try{ const{data} = await login ({ cariables: {...formState}});
+      Auth.login(data.login.token);
+    } catch (e) {console.error(e)}};
   
     return (
       <main className="login">
