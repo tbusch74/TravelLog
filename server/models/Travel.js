@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const voteSchema = require('./Vote');
+const dateFormat = require('../utils/dateFormat')
 
 const travelSchema = new Schema(
   {

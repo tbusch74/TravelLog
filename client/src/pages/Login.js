@@ -24,7 +24,7 @@ const Login = (props) => {
     const handleSubmit = async (event) => {
       event.preventDefault();
 
-      try{ const{data} = await login ({ cariables: {...formState}});
+      try{ const{data} = await login ({ variables: {...formState}});
       Auth.login(data.login.token);
     } catch (e) {console.error(e)}};
   
