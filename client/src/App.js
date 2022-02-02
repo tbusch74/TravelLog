@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import {ApolloProvider} from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from './pages/login'; 
+import Login from './pages/login';
+import Signup from './pages/Signup' 
 
 
 const httpLink = createHttpLink({
@@ -18,6 +19,7 @@ function App() {
       </header>
     <Switch>
       <Route exact path="/login" component={Login}/>
+      <Route exact path="/signup" component={Signup}/>
     </Switch>
     </Router>
     </ApolloProvider>
