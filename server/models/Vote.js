@@ -5,6 +5,7 @@ const voteSchema = new Schema(
     voteCount: {
       type: Number,
       required: false,
+      default: 0
     },
     username: {
       type: String,
