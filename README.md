@@ -32,7 +32,7 @@ Feel free to fork project and please reach out to a contributor.
 
 
 ## Credits:
-Created by Tony Busch, Ben Vue, Inmar Luna, Aisha O. :grinning:
+Created by Tony Busch, Ben Vue, Inmar Luna, Aisha Osman. :grinning:
 
 ## License 
 
