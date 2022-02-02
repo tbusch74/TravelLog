@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -27,11 +27,13 @@ function App() {
         <div className="">
           <Header />
           <div className="container">
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/Dashboard" component={Dashboard} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/Dashboard" component={Dashboard} />
+            </Switch>
           </div>
           <Footer />
         </div>
