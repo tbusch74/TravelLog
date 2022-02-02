@@ -20,4 +20,5 @@ const voteSchema = new Schema(
   }
 );
 
+
 module.exports = voteSchema;

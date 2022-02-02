@@ -41,6 +41,8 @@ const typeDefs = gql `
         addUser(username: String!, email: String!, password: String!): Auth
         addTravel(travelText: String!): Travel
         deleteTravel(travelId: ID!):Travel
+        addVote(travelId: ID!):Travel
+        deleteVote(travelId: ID!):Travel
     }
 `;
 

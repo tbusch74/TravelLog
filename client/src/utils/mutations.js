@@ -49,3 +49,27 @@ mutation deleteTravel($id: ID!) {
   }
 }
 `;
+
+export const ADD_VOTE = gql`
+mutation addVote($id: ID!) {
+  addVote (travelId: $id){
+    _id
+    username
+    travelText
+    createdAt
+    voteCount
+  }
+}
+`;
+
+export const DELETE_VOTE = gql`
+mutation deleteVote($id: ID!) {
+  deleteVote (travelId: $id){
+    _id
+    username
+    travelText
+    createdAt
+    voteCount
+  }
+}
+`;

@@ -83,7 +83,59 @@ const resolvers = {
                 }
             }
             throw new AuthenticationError('You need to be logged in!');
-        }
+        },
+        addVote: async (parent, {travelId}, context) => {
+            if (context.user) {
+                votedTravel = await Travel.findById(travelId)
+                votedTravelArr = votedTravel.votes
+                function isAddPresent(){
+                    for (i=0; i<votedTravelArr.length; i++){
+                        if(votedTravelArr[i].username === context.user.username){
+                            return true
+                        }
+                    }
+                    return false
+                }
+                const addPresent = isAddPresent()
+                if (votedTravel && !addPresent){
+                    await Travel.findByIdAndUpdate(
+                        { _id: travelId},
+                        { $addToSet: {votes: {'username':context.user.username}}},
+                        { new: true }
+                    )
+                    return votedTravel
+                }else{
+                    throw new AuthenticationError('No travel with this ID available to vote on')
+                }
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        deleteVote: async (parent, {travelId}, context) => {
+            if (context.user) {
+                deletedVotedTravel = await Travel.findById(travelId)
+                deletedVotedTravelArr = deletedVotedTravel.votes
+                function isDeletePresent(){
+                    for (i=0; i<deletedVotedTravelArr.length; i++){
+                        if(deletedVotedTravelArr[i].username === context.user.username){
+                            return true
+                        }
+                    }
+                    return false
+                }
+                const deletePresent = isDeletePresent()
+                if (deletedVotedTravel && deletePresent){
+                    await Travel.findByIdAndUpdate(
+                        { _id: travelId},
+                        { $pull: {'votes': {'username': context.user.username}}},
+                        { new: true }
+                    )
+                    return deletedVotedTravel
+                }else{
+                    throw new AuthenticationError('No vote on this travel ID to remove')
+                }
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
     }
 };
 
