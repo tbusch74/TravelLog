@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 import TravelList from "../components/TravelList";
+import TravelForm from '../components/TravelForm';
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -20,6 +21,7 @@ const Profile = () => {
       <h2 className="">
           Viewing {userParam ? `${data.user.username}'s` : 'your'} profile. 
       </h2>
+      {userParam ? '' : <TravelForm />}
         <TravelList travels = {userTravels} />
         </>
       )}
