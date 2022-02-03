@@ -16,6 +16,7 @@ const Profile = () => {
   console.log(data)
   return (
     <main>
+      <Nav />
       {loading ? (
         <div>Loading...</div>
       ) : ( 
