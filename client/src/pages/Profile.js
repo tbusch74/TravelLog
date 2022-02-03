@@ -10,7 +10,7 @@ const Profile = () => {
       </div>
 
       <div className="">
-        <div className="">{/* PRINT THOUGHT LIST  */}</div>
+        <div className="">{/* PRINT COMMENT LIST  */}</div>
 
         <div className="">{/* PRINT FRIEND LIST */}</div>
       </div>

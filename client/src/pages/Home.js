@@ -5,10 +5,6 @@ import Login from "./Login";
 import Nav from "../components/Nav";
 
 const Home = () => {
-  // use useQuery hook to make query request
-  // const {  data } = useQuery(QUERY_THOUGHTS);
-  // const thoughts = data?.thoughts || [];
-  // console.log(thoughts);
 
   return (
     <main>
@@ -16,6 +12,7 @@ const Home = () => {
         <div className='col-12 mb-3'>
         </div>
       </div>
+      <Footer />
     </main>
   );
 };
