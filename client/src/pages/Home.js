@@ -7,6 +7,7 @@ import TravelList from "../components/TravelList";
 const Home = () => {
   const { loading, data } = useQuery(QUERY_TRAVELS);
   const travels = data?.travels || [];
+  console.log(travels)
 
   return (
     <main>
