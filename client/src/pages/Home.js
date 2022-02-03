@@ -1,21 +1,20 @@
 import React from "react";
 import { useQuery } from '@apollo/client';
-import Footer from "../components/Footer";
-import Login from "./Login";
-import Nav from "../components/Nav";
+import { QUERY_TRAVELS } from '../utils/queries';
+import TravelList from "../components/TravelList";
+
 
 const Home = () => {
-  // use useQuery hook to make query request
-  // const {  data } = useQuery(QUERY_THOUGHTS);
-  // const thoughts = data?.thoughts || [];
-  // console.log(thoughts);
+  const { loading, data } = useQuery(QUERY_TRAVELS);
+  const travels = data?.travels || [];
 
   return (
     <main>
-      <div className='flex-row justify-space-between'>
-        <div className='col-12 mb-3'>
-        </div>
-      </div>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <TravelList travels = {travels} />
+      )}
     </main>
   );
 };

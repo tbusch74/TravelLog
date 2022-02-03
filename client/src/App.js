@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 
 import Header from './components/Header';
@@ -10,6 +10,8 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
+import Travel from './pages/Travel';
+import NoMatch from './pages/NoMatch';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -37,11 +39,14 @@ function App() {
         <div className="">
           <Header />
           <div className="container">
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/profile" component={Profile} />
-
+              <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/profile:username?" component={Profile} />
+              <Route exact path="/travel:_id?" component={Travel} />
+              <Route component={NoMatch} />
+            </Switch>
           </div>
           <Footer />
         </div>
