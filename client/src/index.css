@@ -38,3 +38,39 @@ nav a {
   transition: all 0.2s;
 }
 
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  justify-content: space-evenly;
+  width: 100%;
+  letter-spacing: .1rem;
+}
+
+.container {
+  width: 85%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login {
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* CARDS */
+.card-header {
+  color: var(--secondary);
+  margin: 0;
+  background-color: var(--dark);
+  padding: 0.625rem;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
+.card-body {
+  padding: 2.5%;
+  font-size: 1.4rem;
+}
+
