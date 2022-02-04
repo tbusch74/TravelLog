@@ -22,5 +22,8 @@
   "homepage": "https://github.com/tbusch74/TravelBlog#readme",
   "devDependencies": {
     "concurrently": "^7.0.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1"
   }
 }

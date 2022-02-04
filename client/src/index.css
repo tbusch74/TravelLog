@@ -38,3 +38,7 @@ nav a {
   transition: all 0.2s;
 }
 
+footer {
+  text-align: center;
+  margin-top: 100%;
+}
