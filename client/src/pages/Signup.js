@@ -26,7 +26,7 @@ const Signup = () => {
       event.preventDefault();
       try {
         const {data} = await addUser({ variables: {...formState}});
-        Auth.logn(data.addUser.token);
+        Auth.login(data.addUser.token);
       }catch (e) { console.error(e)};
     };
   
